@@ -1,1 +1,1 @@
-# knowledge-structure-ontology
+## Knowledge space ontology
