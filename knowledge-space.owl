@@ -11,7 +11,6 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/knowledge-space">
-        <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
         <rdfs:comment xml:lang="en">Ontology for representing knowledge space</rdfs:comment>
     </owl:Ontology>
     
@@ -110,34 +109,134 @@
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/knowledge-space#isBaseOf -->
+    <!-- http://purl.org/dc/terms/source -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#isBaseOf">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#refersTo"/>
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#baseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#baseOf">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#hasBase"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:comment xml:lang="en">Data on which knowledge space was made</rdfs:comment>
-        <rdfs:label xml:lang="en">is base of</rdfs:label>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:comment xml:lang="en">Data used in IITA methods</rdfs:comment>
+        <rdfs:label xml:lang="en">base of</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/knowledge-space#refersTo -->
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#baseOfComputation -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#refersTo">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#baseOfComputation">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#computedFrom"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples"/>
+        <rdfs:comment xml:lang="en">Data used for computation number of counterexamples</rdfs:comment>
+        <rdfs:label xml:lang="en">base of computation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#baseOfGeneration -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#baseOfGeneration">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#generatedFrom"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        <rdfs:comment xml:lang="en">Counterexamples used for inductively generated list of competing quasi orders</rdfs:comment>
+        <rdfs:label xml:lang="en">base of generation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#computedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#computedFrom">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
-        <rdfs:comment xml:lang="en">Refers to data on which knowledge space was generated</rdfs:comment>
-        <rdfs:label xml:lang="en">refers to</rdfs:label>
+        <rdfs:comment xml:lang="en">Computed numbers of counterexamples from data</rdfs:comment>
+        <rdfs:label xml:lang="en">computed from</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/knowledge-space#relates -->
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#diagramOf -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#relates">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:comment xml:lang="en">Relates on scientific document</rdfs:comment>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#diagramOf">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#hasDiagram"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#HasseDiagram"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:comment xml:lang="en">Hasse diagram of surmise relation</rdfs:comment>
+        <rdfs:label xml:lang="en">diagram of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#generatedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#generatedFrom">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples"/>
+        <rdfs:comment xml:lang="en">Inductively generated list of competing quasi orders from the numbers of counterexamples</rdfs:comment>
+        <rdfs:label xml:lang="en">generated from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#hasBase -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#hasBase">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
+        <rdfs:comment xml:lang="en">Refers to the data which are used in IITA methods</rdfs:comment>
+        <rdfs:label xml:lang="en">has base</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#hasDiagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#hasDiagram">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#HasseDiagram"/>
+        <rdfs:comment xml:lang="en">Hasse diagram of surmise relation</rdfs:comment>
+        <rdfs:label xml:lang="en">has diagram</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#hasSelectionSet -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#hasSelectionSet">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#selectionSetFor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        <rdfs:comment xml:lang="en">Refers to the list of competing quasi orders used in IITA methods</rdfs:comment>
+        <rdfs:label xml:lang="en">has selection set</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#refers -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#refers">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/source"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:comment xml:lang="en">Refers on scientific document</rdfs:comment>
+        <rdfs:label xml:lang="en">refers</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#selectionSetFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#selectionSetFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:comment xml:lang="en">Selection set of competing quasi orders used in IITA methods</rdfs:comment>
+        <rdfs:label xml:lang="en">selection set for</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -156,21 +255,10 @@
     <!-- http://www.semanticweb.org/ontologies/knowledge-space#algorithm -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#algorithm">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">Name of the used algorithm (e.g. minimized corrected inductive item tree analysis)</rdfs:comment>
         <rdfs:label xml:lang="en">algorithm</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/ontologies/knowledge-space#diagram -->
-
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#diagram">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-        <rdfs:comment xml:lang="en">Diagram of surmise relation (e.g. Hasse diagram)</rdfs:comment>
-        <rdfs:label xml:lang="en">diagram</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -178,8 +266,8 @@
     <!-- http://www.semanticweb.org/ontologies/knowledge-space#diff -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#diff">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:comment xml:lang="en">Fit measure coefficient of selected quasi order</rdfs:comment>
         <rdfs:label xml:lang="en">diff</rdfs:label>
     </owl:DatatypeProperty>
@@ -189,8 +277,8 @@
     <!-- http://www.semanticweb.org/ontologies/knowledge-space#error -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#error">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:comment xml:lang="en">Error rate</rdfs:comment>
         <rdfs:label xml:lang="en">error</rdfs:label>
     </owl:DatatypeProperty>
@@ -200,10 +288,32 @@
     <!-- http://www.semanticweb.org/ontologies/knowledge-space#implications -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#implications">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">List of implications</rdfs:comment>
         <rdfs:label xml:lang="en">implications</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#labels -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#labels">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#HasseDiagram"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Labels used in diagram for representation of items</rdfs:comment>
+        <rdfs:label xml:lang="en">labels</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#length -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#length">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Length of list of competing quasi orders</rdfs:comment>
+        <rdfs:label xml:lang="en">length</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -212,7 +322,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#numberOfItems">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
         <rdfs:comment xml:lang="en">Number of items in the dataset</rdfs:comment>
         <rdfs:label xml:lang="en">number of items</rdfs:label>
     </owl:DatatypeProperty>
@@ -223,9 +333,20 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#numberOfRecords">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
         <rdfs:comment xml:lang="en">Number of records in the dataset</rdfs:comment>
         <rdfs:label xml:lang="en">number of records</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#selectionSetIndex -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#selectionSetIndex">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Index of selected list of implications with best fit measure coefficient</rdfs:comment>
+        <rdfs:label xml:lang="en">selection set index</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -241,28 +362,96 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Computed numbers of counterexamples for all items pairs in a dataset</rdfs:comment>
+        <rdfs:label xml:lang="en">Counterexamples</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/knowledge-space#Data -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Data">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace"/>
         <rdfs:comment xml:lang="en">Data resources</rdfs:comment>
         <rdfs:label xml:lang="en">Data</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace -->
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#Diagram -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#KnowledgeSpace">
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Diagram">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Symbolic representation of information</rdfs:comment>
+        <rdfs:label xml:lang="en">Diagram</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#HasseDiagram -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#HasseDiagram">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Diagram"/>
+        <rdfs:comment xml:lang="en">Hasse diagram of surmise relation</rdfs:comment>
+        <rdfs:label xml:lang="en">Hasse Diagram</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#IITA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#IITA">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#refersTo"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#hasBase"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Knowledge Space</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#algorithm"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#diff"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#error"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/knowledge-space#implications"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Results of performed IITA (Inductive Item Tree Analysis) algorithm</rdfs:comment>
+        <rdfs:label xml:lang="en">IITA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Inductively generated list of competing quasi orders</rdfs:comment>
+        <rdfs:label xml:lang="en">Quasi Orders</rdfs:label>
     </owl:Class>
     
 
@@ -401,14 +590,35 @@
         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/type">
-        <rdfs:comment xml:lang="en">The nature or genre of the resource.</rdfs:comment>
         <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#type-006"/>
+        <rdfs:comment xml:lang="en">The nature or genre of the resource.</rdfs:comment>
         <rdfs:label xml:lang="en">Type</rdfs:label>
         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
         <dcterms:description xml:lang="en">Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</dcterms:description>
         <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-07-02</dcterms:issued>
         <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
         <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</dcterms:modified>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Counterexamples"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Data"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#Diagram"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#IITA"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/knowledge-space#QuasiOrders"/>
+        </owl:members>
     </rdf:Description>
 </rdf:RDF>
 
